@@ -39,7 +39,8 @@ grunt.initConfig({
 
                 },
                 files: {
-                    'app/utils/appConfig.js': 'app/utils/appConfig.js'
+                    'app/utils/appConfig.js': 'app/utils/appConfig.js',
+                    'index.html': 'index.html'
                 }
             },
     }
@@ -55,6 +56,17 @@ In your appConfig.js file add a dev and prod switch blocks
     /* env:prod *#/
      var webServerUrl = "www.prod-yoursite.com";
      /* env:prod:end */
+```
+
+In your index.html file add the dev and prod switch blocks
+
+```html
+    <!-- env:dev -->
+    <div> DEV version </div>
+    <!-- env:dev:end -->
+    <!-- env:prod -->
+    <div> PROD version </div>
+    <!-- env:prod:end -->
 ```
 
 ### Options
