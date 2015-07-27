@@ -1,6 +1,6 @@
 # grunt-code-switch
 
-> The best Grunt plugin ever.
+> Used to switch between previously defined HTML and JS comment blocks in project files to change based on specified parameters.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
@@ -24,66 +24,62 @@ In your project's Gruntfile, add a section named `code_switch` to the data objec
 
 ```js
 grunt.initConfig({
-  code_switch: {
-    options: {
-      // Task-specific options go here.
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
-  },
+    code_switch: {
+            start: {
+                options: {
+                    environment: grunt.option('env') || 'dev',
+                    env_char: '#',
+                    blocks: [{
+                            code_tag: 'env:dev',
+                            grunt_option: 'dev'
+                        }, {
+                            code_tag: 'env:prod',
+                            grunt_option: 'prod'
+                        }]
+
+                },
+                files: {
+                    'app/utils/appConfig.js': 'app/utils/appConfig.js'
+                }
+            },
+    }
 });
+```
+
+In your appConfig.js file add a dev and prod switch blocks
+
+```js
+    /* env:dev */
+    var webServerUrl = "www.dev-yoursite.com";
+    /* env:dev:end */
+    /* env:prod *#/
+     var webServerUrl = "www.prod-yoursite.com";
+     /* env:prod:end */
 ```
 
 ### Options
 
-#### options.separator
+#### environment
 Type: `String`
 Default value: `',  '`
 
-A string value that is used to do something with whatever.
+A string value that specifies the allowable parameters to pass to make the code switch.
 
-#### options.punctuation
+#### env_char
 Type: `String`
-Default value: `'.'`
+Default value: `#`
 
-A string value that is used to do something else with whatever else.
+A single symbol that is added to code for enabling or disabling code blocks.
 
-### Usage Examples
+#### blocks
+Type: `Array`
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+A array block defining the possible switches. It contains 'code_tag' and its corresponding 'grunt_option'
 
-```js
-grunt.initConfig({
-  code_switch: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
-```
+#### files
+Type: `Array`
 
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  code_switch: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
-```
-
-## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+A array of files to include which containing the code switching blocks
 
 ## Release History
-_(Nothing yet)_
+0.1.0 Initial Release
