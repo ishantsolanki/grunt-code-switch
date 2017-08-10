@@ -44,7 +44,7 @@ grunt.initConfig({
 });
 ```
 
-In `JS` files add a code switch blocks in the following manner.
+In `JS` files add the code switch blocks in the following manner.
 
 **Note:** The spaces does matter.
 
