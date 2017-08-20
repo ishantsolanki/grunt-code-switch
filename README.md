@@ -25,20 +25,22 @@ In your Grunt configuration, add a section named `code_switch` to the data objec
 ```js
 grunt.initConfig({
   code_switch: {
-    options: {
-      environment: grunt.option('env') || 'dev',
-      env_char: '#',
-      blocks: [{
-        code_tag: 'env:dev',
-        grunt_option: 'dev'
-      }, {
-        code_tag: 'env:prod',
-        grunt_option: 'prod'
-      }]
-    },
-    files: {
-      'app/utils/appConfig.js': 'app/utils/appConfig.js',
-      'index.html': 'index.html'
+    default: {
+      options: {
+        environment: grunt.option('env') || 'dev',
+        env_char: '#',
+        blocks: [{
+          code_tag: 'env:dev',
+          grunt_option: 'dev'
+        }, {
+          code_tag: 'env:prod',
+          grunt_option: 'prod'
+        }]
+      },
+      files: {
+        'app/utils/appConfig.js': 'app/utils/appConfig.js',
+        'index.html': 'index.html'
+      }
     }
   }
 });
@@ -120,7 +122,7 @@ Type: `Array`
 A array of files to include which containing the code switching blocks
 
 
-##Example
+###Example
 I use the following setup in my development environment
 
 In the grunt file
@@ -128,20 +130,20 @@ In the grunt file
 grunt.initConfig({
   code_switch: {
     start: {
-    options: {
-      environment: 'prod',
-      env_char: '#',
-      blocks: [{
-        code_tag: 'env:dev',
-        grunt_option: 'dev'
-      }, {
-        code_tag: 'env:prod',
-        grunt_option: 'prod'
-      }]
-    },
-    files: {
-      'app/scripts/config.js': 'app/scripts/config.js'
-    }
+      options: {
+        environment: 'prod',
+        env_char: '#',
+        blocks: [{
+          code_tag: 'env:dev',
+          grunt_option: 'dev'
+        }, {
+          code_tag: 'env:prod',
+          grunt_option: 'prod'
+        }]
+      },
+      files: {
+        'app/scripts/config.js': 'app/scripts/config.js'
+      }
     },
     end: {
       options: {
