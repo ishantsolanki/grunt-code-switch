@@ -1,10 +1,10 @@
-/* env:dev */
+/* env:dev *#/
 
 console.log('this is development');
 
 /* env:dev:end */
 
-/* env:prod *#/
+/* env:prod */
 
 console.log('this is production');
 
