@@ -1,5 +1,4 @@
-# grunt-code-switch
-
+# grunt-code-switch [![Build Status](https://travis-ci.org/ishantsolanki/grunt-code-switch.svg?branch=master)](https://travis-ci.org/ishantsolanki/grunt-code-switch)
 > Toggle comments in HTML and JS files.
 
 ## Getting Started
