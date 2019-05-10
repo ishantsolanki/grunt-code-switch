@@ -8,3 +8,5 @@ node_js:
 cache:
   directories:
     - node_modules
+env:
+  - CODECOV_TOKEN="53f71388-8b67-483d-8fff-795a377c96bb"
